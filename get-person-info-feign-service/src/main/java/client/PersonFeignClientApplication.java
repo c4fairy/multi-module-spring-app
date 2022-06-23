@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @Slf4j
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@EnableFeignClients
+@EnableFeignClients(basePackages = {"ru.dina.feign"})
 public class PersonFeignClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(PersonFeignClientApplication.class, args);
