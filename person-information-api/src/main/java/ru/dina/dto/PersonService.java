@@ -1,13 +1,10 @@
-package ru.dina.feign;
+package ru.dina.dto;
 
-import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
-import ru.dina.dto.Person;
 
 import java.util.List;
 
-@FeignClient(name = "person-service", url = "${url.client:http://localhost:8080//persons/}") //+path вместо url (хост и порт через еврику/конфиг)
-public interface PersonFeignClient {
+public interface PersonService {
     @GetMapping()
     List<Person> getAllPersons();
 
@@ -24,4 +21,5 @@ public interface PersonFeignClient {
 
     @DeleteMapping("/{id}")
     void deletePersonById(@PathVariable Long id);
+
 }

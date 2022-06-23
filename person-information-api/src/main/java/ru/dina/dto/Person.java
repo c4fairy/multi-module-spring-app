@@ -2,10 +2,12 @@ package ru.dina.dto;
 
 import lombok.Data;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 @Data
 //object ready for storage in a JPA-based data store
 public class Person {
