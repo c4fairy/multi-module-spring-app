@@ -13,32 +13,36 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/persons")
-public class PersonController{
+public class PersonController implements PersonService{
     private final PersonClient personClient;
 
+    @Override
     @GetMapping
-    List<Person> getAllPersons() {
+    public List<Person> getAllPersons() {
         return personClient.getAllPersons();
     }
 
+    @Override
     @PostMapping
-    Person createNewPerson(@RequestBody Person newPerson) {
+    public Person createNewPerson(@RequestBody Person newPerson) {
         return personClient.createNewPerson(newPerson);
     }
 
+    @Override
     @GetMapping("/{id}")
-    Person findPersonById(@PathVariable Long id) {
+    public Person findPersonById(@PathVariable Long id) {
         return personClient.findPersonById(id);
     }
 
 
+    @Override
     @PutMapping("/{id}")
-    Person replacePerson(@RequestBody Person newPerson, @PathVariable Long id) {
+    public Person replacePerson(@RequestBody Person newPerson, @PathVariable Long id) {
         return personClient.replacePerson(newPerson, id);
     }
-
+    @Override
     @DeleteMapping("/{id}")
-    void deletePersonById(@PathVariable Long id) {
+    public void deletePersonById(@PathVariable Long id) {
         personClient.deletePersonById(id);
     }
 }
