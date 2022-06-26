@@ -2,17 +2,11 @@ package ru.dina.dto;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.util.Objects;
 
-@Entity
 @Data
-//object ready for storage in a JPA-based data store
 public class Person {
-    private @Id
-    @GeneratedValue Long id;
+    private long id;
     private String name;
     private String adress;
 
@@ -20,10 +14,16 @@ public class Person {
     }
 
     public Person(String name, String adress) {
-
         this.name = name;
         this.adress = adress;
     }
+
+    public Person(long id, String name, String adress) {
+        this.id = id;
+        this.name = name;
+        this.adress = adress;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -46,4 +46,5 @@ public class Person {
     public String toString() {
         return "Person{" + "id=" + this.id + ", name='" + this.name + '\'' + ", adress='" + this.adress + '\'' + '}';
     }
+
 }

@@ -1,10 +1,10 @@
 package util;
 
 
-import ru.dina.dto.Person;
+import ru.dina.dto.PersonDto;
 
 public class PersonUtil {
-    public static String[] getPersonSurname(Person[] persons) {
+    public static String[] getPersonSurname(PersonDto[] persons) {
         int count = persons.length;
         String[] surnames = new String[count];
         for (int i = 0; i < count; i++) {
