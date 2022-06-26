@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.dina.dto.Person;
-import ru.dina.dto.PersonDto;
-import ru.dina.dto.PersonService;
+import ru.dina.PersonDto;
+import ru.dina.PersonService;
 
 import java.util.List;
 
@@ -26,25 +25,25 @@ public class PersonController implements PersonService {
 
     @Override
     @GetMapping
-    public List<Person> getAllPersons() {
+    public List<PersonDto> getAllPersons() {
         return personClient.getAllPersons();
     }
 
     @Override
     @PostMapping
-    public void createNewPerson(@RequestBody Person newPerson) {
+    public void createNewPerson(@RequestBody PersonDto newPerson) {
         personClient.createNewPerson(newPerson);
     }
 
     @Override
     @GetMapping("/{id}")
-    public Person findPersonById(@PathVariable("id") Long id) {
+    public PersonDto findPersonById(@PathVariable("id") Long id) {
         return personClient.findPersonById(id);
     }
 
     @Override
     @PutMapping("/{id}")
-    public void replacePerson(@RequestBody Person newPerson, @PathVariable("id") Long id) {
+    public void replacePerson(@RequestBody PersonDto newPerson, @PathVariable("id") Long id) {
         personClient.replacePerson(newPerson, id);
     }
 

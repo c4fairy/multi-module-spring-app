@@ -1,12 +1,10 @@
-package ru.dina.dto;
+package ru.dina;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import java.util.Objects;
 @Data
-//object ready for storage in a JPA-based data store
-    public class PersonDto {
+public class PersonDto {
     @JsonProperty("id")
     private long id;
     @JsonProperty("name")
@@ -14,9 +12,10 @@ import java.util.Objects;
     @JsonProperty("adress")
     private String adress;
 
-    public PersonDto(long l, String name, String some_address1) {
+    public PersonDto(long l, String name, String address) {
     }
 
-    public PersonDto() {}
+    public PersonDto() {
+    }
 
 }

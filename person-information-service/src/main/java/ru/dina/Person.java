@@ -1,4 +1,4 @@
-package ru.dina.dto;
+package ru.dina;
 
 import lombok.Data;
 

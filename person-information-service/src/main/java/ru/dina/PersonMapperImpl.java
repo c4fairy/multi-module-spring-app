@@ -1,8 +1,6 @@
 package ru.dina;
 
 import org.springframework.stereotype.Component;
-import ru.dina.dto.Person;
-import ru.dina.dto.PersonDto;
 
 @Component
 public class PersonMapperImpl implements PersonMapper {
@@ -17,5 +15,17 @@ public class PersonMapperImpl implements PersonMapper {
         person.setName(personDto.getName());
         person.setAdress(personDto.getAdress());
         return person;
+    }
+
+    @Override
+    public PersonDto personDtoToPerson(Person person) {
+        if (person == null)
+        return null;
+
+        PersonDto personDto = new PersonDto();
+        personDto.setId(person.getId());
+        personDto.setName(person.getName());
+        personDto.setAdress(person.getAdress());
+        return personDto;
     }
 }

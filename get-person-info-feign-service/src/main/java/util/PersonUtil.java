@@ -1,7 +1,7 @@
 package util;
 
 
-import ru.dina.dto.PersonDto;
+import ru.dina.PersonDto;
 
 public class PersonUtil {
     public static String[] getPersonSurname(PersonDto[] persons) {

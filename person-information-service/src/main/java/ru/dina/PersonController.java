@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.dina.dto.Person;
-import ru.dina.dto.PersonDto;
-import ru.dina.dto.PersonService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,33 +29,36 @@ public class PersonController implements PersonService {
 
     @Override
     @GetMapping
-    public List<Person> getAllPersons() {
+    public List<PersonDto> getAllPersons() {
         log.info("Вызов метода findAll()");
-        return persons;
+        List<PersonDto> personsDto = new ArrayList<>();
+        for (Person person: persons)
+            personsDto.add(personMapper.personDtoToPerson(person));
+        return personsDto;
     }
 
     @Override
     @PostMapping
-    public void createNewPerson(Person newPerson) {
+    public void createNewPerson(PersonDto newPerson) {
         log.info("Вызов метода newPerson()");
-        persons.add(newPerson);
+        persons.add(personMapper.personToPersonDto(newPerson));
     }
 
     @Override
     @GetMapping("/{id}")
-    public Person findPersonById(Long id) {
+    public PersonDto findPersonById(Long id) {
         log.info("Вызов метода findById(id)");
-        return persons.stream().filter(person -> person.getId()==id).findFirst().get();
+        return personMapper.personDtoToPerson(persons.stream().filter(person -> person.getId()==id).findFirst().get());
     }
 
     @Override
     @PutMapping("/{id}")
-    public void replacePerson(Person newPerson, Long id) {
+    public void replacePerson(PersonDto newPerson, Long id) {
         log.info("Вызов метода replacePerson");
         int i = 0;
         for (Person person : persons) {
             if (person.getId() == id) {
-                persons.set(i, newPerson);
+                persons.set(i, personMapper.personToPersonDto(newPerson));
             }
             i++;
         }
